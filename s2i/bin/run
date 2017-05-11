@@ -1,0 +1,10 @@
+#!/bin/bash -e
+#
+# S2I run script for the 'vboxton/alpine-sshdb' image.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+exec /usr/sbin/dropbear -EFRmsg -r /home/simple/.dropbear/hk_rsa -r /home/simple/.dropbear/hk_dss -r /home/simple/.dropbear/hk_ecdsa -p 2222
