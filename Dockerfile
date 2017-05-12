@@ -3,8 +3,6 @@ MAINTAINER VirtualBox Exton <vboxton@gmail.com>
 
 COPY ./keys/authorized_keys /home/simple/.ssh/authorized_keys
 
-COPY ./s2i/bin/ /usr/libexec/s2i
-
 RUN apk update &&\
     apk upgrade && \
     apk add dropbear &&\
@@ -23,4 +21,4 @@ USER 1001
 
 EXPOSE 2222
 
-CMD ["/usr/libexec/s2i/usage"]
+CMD ["/usr/sbin/dropbear", "-EFRmsg", "-r", "/home/simple/.dropbear/hk_rsa", "-r", "/home/simple/.dropbear/hk_dss", "-r", "/home/simple/.dropbear/hk_ecdsa", "-p", "2222"]
